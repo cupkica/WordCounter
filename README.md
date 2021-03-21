@@ -9,6 +9,6 @@ WordCounter project consists of two sub-project:
 
 
 ## Note
-In order to properly start WCF service, application has to be started with ***administration privileges***
+In order to properly start WCF service, application has to be started with ***administration privileges***.
 
 In order to connect project with a database, the connection string has to be updated. 

@@ -14,7 +14,7 @@
             <TextBox Name="txtUserInput" AcceptsReturn="True" />
         </Border>
         <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Button Margin="0,0,4,0 " Width="100" Content="Ok" IsDefault="True" IsCancel="True" Click="ButtonOK_Click"/>
+            <Button Margin="0,0,4,0 " Width="100" Content="Ok" IsDefault="True" Click="ButtonOK_Click"/>
             <Button Margin="4,0,0,0" Width="100" Content="Cancel" IsCancel="True"/>
         </StackPanel>
     </Grid>

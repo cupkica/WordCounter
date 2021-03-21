@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using System.Windows;
 using WordCounterApplication.DataAccess;
 using WordCounterApplication.Interfaces;
 using WordCounterApplication.Interfaces.Repositories;
@@ -15,16 +16,25 @@ namespace WordCounterApplication.Readers
 
         public string Read()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-
-            foreach(Word word in unitOfWork.Words.GetAll())
+            try
             {
-                stringBuilder.Append(word.Name + '\t');
-                stringBuilder.Append(word.Description);
-                stringBuilder.AppendLine();
-            }
+                StringBuilder stringBuilder = new StringBuilder();
 
-            return stringBuilder.ToString();
+                foreach (Word word in unitOfWork.Words.GetAll())
+                {
+                    stringBuilder.Append(word.Name + '\t');
+                    stringBuilder.Append(word.Description);
+                    stringBuilder.AppendLine();
+                }
+
+                return stringBuilder.ToString();
+            }
+            catch
+            {
+                MessageBox.Show("Failed to connect on database. \nPlease check configuration.", "Error");
+                return string.Empty;
+            }
+          
         }
     }
 }

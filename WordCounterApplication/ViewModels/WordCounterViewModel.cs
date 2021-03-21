@@ -71,6 +71,8 @@ namespace WordCounterApplication.ViewModels
 
         #endregion
 
+        #region Constructors
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -78,6 +80,8 @@ namespace WordCounterApplication.ViewModels
         {
             readerFactory = new ConcreteReaderFactory();
         }
+
+        #endregion
 
         #region Commands
 

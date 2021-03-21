@@ -1,0 +1,52 @@
+﻿<Window x:Class="WordCounterApplication.Views.WordCounterView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:WordCounterApplication.ViewModels"
+        mc:Ignorable="d"
+        Title="Word Counter" Height="600" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.DataContext>
+        <viewmodels:WordCounterViewModel/>
+    </Window.DataContext>
+
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Bottom" Margin="4" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Calculate number of words" Command="{Binding CalculateNumberOfWordsCommand}"/>
+            <Label Content="Number of words:"/>
+            <Border BorderBrush="Blue" BorderThickness="2,2,2,2">
+                <TextBlock Width="100" IsEnabled="False" Text="{Binding NumberOfWords}"/>
+            </Border>
+        </StackPanel>
+        <Grid Margin="4,8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0" Orientation="Vertical">
+                <Button Height="50" Margin="20" Name="FileReader"
+                         Content="Open .txt file" Command="{Binding FileReaderCommand}"/>
+                <Button Height="50" Margin="20" Name="DatabaseReader"
+                         Content="Open text from database" Command="{Binding DatabaseReaderCommand}"/>
+                <Button Height="50" Margin="20" Name="UserInputReader" Content="Text Editor"
+                    Command="{Binding UserInputReaderCommand}"/>
+            </StackPanel>
+            <Border Grid.Column="1" BorderBrush="Gray" BorderThickness="2,0,0,0">
+                <StackPanel Orientation="Vertical" Margin="20">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Margin="2" DockPanel.Dock="Left" Content="Preview"/>
+                        <Button Margin="2" Grid.Column="1" DockPanel.Dock="Right" Content="Clear" Command="{Binding ClearTextCommand}"/>
+                    </Grid>
+
+                    <TextBox Height="400" 
+                         HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" IsReadOnly="True" 
+                        Text="{Binding Text}"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+    </DockPanel>
+</Window>
